@@ -8,18 +8,18 @@ from Services.CSVService import CSVService
 
 class CSVServiceUnitTest(unittest.TestCase):
     def setUp(self):
-        self.csv_service = CSVService()
+        url = "https://raw.githubusercontent.com/vladstanescu94/agilefreaks-challenge/develop/Resources/coffee_shops.csv"
+        self.csv_service = CSVService(csv_url=url)
 
     def tearDown(self):
         del self.csv_service
 
-    def test_get_csv_data_raises_missing_schema_when_invalid_url_provided(self):
-        url = "test"
+    def test_get_csv_data_from_url_raises_missing_schema_when_invalid_url_provided(self):
+        self.csv_service.csv_url = "test"
         with self.assertRaises(requests.exceptions.MissingSchema):
-            self.csv_service.get_csv_data(url)
+            self.csv_service.get_csv_data_from_url()
 
-    def test_get_coffee_shops_from_url_returns_expected_value(self):
-        url = "https://raw.githubusercontent.com/vladstanescu94/agilefreaks-challenge/develop/Resources/coffee_shops.csv"
+    def test_get_coffee_shops_returns_expected_value(self):
 
         expected_result = [
             CoffeeShop("Starbucks Seattle", Coordinates(47.5809, -122.3160)),
@@ -32,7 +32,7 @@ class CSVServiceUnitTest(unittest.TestCase):
                        Coordinates(-33.871843, 151.206767)),
         ]
 
-        result = self.csv_service.get_coffee_shops_from_url(url)
+        result = self.csv_service.get_coffee_shops()
 
         for index, shop in enumerate(result):
             self.assertEqual(shop.name, expected_result[index].name)
