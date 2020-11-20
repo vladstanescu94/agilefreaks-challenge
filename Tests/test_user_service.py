@@ -12,7 +12,7 @@ class UserServiceUnitTest(unittest.TestCase):
     def tearDown(self):
         del self.user_service
 
-    def test_that_get_user_data_from_args_returns_expected_value(self):
+    def test_get_user_data_from_args_returns_expected_value(self):
         user_args = ["23.2", "12.6", "http://test.com"]
         expected_outcome = UserData(Coordinates(23.2, 12.6), "http://test.com")
         result = self.user_service.get_user_data_from_args(user_args)
@@ -23,7 +23,7 @@ class UserServiceUnitTest(unittest.TestCase):
                          expected_outcome.coordinates.longitude)
         self.assertEqual(result.csv_url, expected_outcome.csv_url)
 
-    def test_that_get_user_data_from_args_raises_index_error(self):
+    def test_get_user_data_from_args_raises_index_error(self):
         user_args = []
 
         with self.assertRaises(IndexError):

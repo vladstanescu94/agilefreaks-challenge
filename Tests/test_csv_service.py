@@ -13,12 +13,12 @@ class CSVServiceUnitTest(unittest.TestCase):
     def tearDown(self):
         del self.csv_service
 
-    def test_that_get_csv_data_raises_missing_schema_when_invalid_url_provided(self):
+    def test_get_csv_data_raises_missing_schema_when_invalid_url_provided(self):
         url = "test"
         with self.assertRaises(requests.exceptions.MissingSchema):
             self.csv_service.get_csv_data(url)
 
-    def test_that_get_coffee_shops_returns_expected_value(self):
+    def test_get_coffee_shops_from_url_returns_expected_value(self):
         url = "https://raw.githubusercontent.com/vladstanescu94/agilefreaks-challenge/develop/Resources/coffee_shops.csv"
 
         expected_result = [
