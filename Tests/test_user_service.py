@@ -1,7 +1,7 @@
 import unittest
+
 from Models.UserData import UserData
 from Models.Coordinates import Coordinates
-
 from Services.UserService import UserService
 
 
