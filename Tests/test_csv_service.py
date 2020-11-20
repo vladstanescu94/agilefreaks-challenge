@@ -3,23 +3,23 @@ import requests
 
 from Models.Coordinates import Coordinates
 from Models.CoffeeShop import CoffeeShop
-from Services.URLService import URLService
+from Services.CSVService import CSVService
 
 
-class URLServiceUnitTest(unittest.TestCase):
+class CSVServiceUnitTest(unittest.TestCase):
     def setUp(self):
-        url = url = "https://raw.githubusercontent.com/vladstanescu94/agilefreaks-challenge/develop/Resources/coffee_shops.csv"
-        self.url_service = URLService(url)
+        self.csv_service = CSVService()
 
     def tearDown(self):
-        del self.url_service
+        del self.csv_service
 
-    def test_that_get_coffeee_shops_raises_missing_schema_when_invalid_url_provided(self):
-        self.url_service.url = "test"
+    def test_that_get_csv_data_raises_missing_schema_when_invalid_url_provided(self):
+        url = "test"
         with self.assertRaises(requests.exceptions.MissingSchema):
-            self.url_service.get_coffee_shops()
+            self.csv_service.get_csv_data(url)
 
     def test_that_get_coffee_shops_returns_expected_value(self):
+        url = "https://raw.githubusercontent.com/vladstanescu94/agilefreaks-challenge/develop/Resources/coffee_shops.csv"
 
         expected_result = [
             CoffeeShop("Starbucks Seattle", Coordinates(47.5809, -122.3160)),
@@ -32,7 +32,7 @@ class URLServiceUnitTest(unittest.TestCase):
                        Coordinates(-33.871843, 151.206767)),
         ]
 
-        result = self.url_service.get_coffee_shops()
+        result = self.csv_service.get_coffee_shops_from_url(url)
 
         for index, shop in enumerate(result):
             self.assertEqual(shop.name, expected_result[index].name)

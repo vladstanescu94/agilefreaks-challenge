@@ -7,21 +7,18 @@ from Models.Coordinates import Coordinates
 from Models.CoffeeShop import CoffeeShop
 
 
-class URLService:
+class CSVService:
 
-    def __init__(self, url):
-        self.url = url
-
-    def get_coffee_shops(self):
-        response = self._get_url_data()
-        csv_data = self._parse_csv_response(response)
+    def get_coffee_shops_from_url(self, url):
+        response = self.get_csv_data(url)
+        csv_data = self.parse_csv_response(response)
         coffee_shops = self._generate_coffee_shops_list(csv_data)
         return coffee_shops
 
-    def _get_url_data(self):
-        return requests.get(self.url, stream=True)
+    def get_csv_data(self, url):
+        return requests.get(url, stream=True)
 
-    def _parse_csv_response(self, response):
+    def parse_csv_response(self, response):
         return csv.reader(codecs.iterdecode(response.iter_lines(), 'utf-8'), delimiter=',')
 
     def _generate_coffee_shops_list(self, csv_data):
