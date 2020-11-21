@@ -1,6 +1,6 @@
 import sys
-from Services.UserService import UserService
-from Services.CSVService import CSVService
+from Services.user_service import UserService
+from Services.csv_service import CSVService
 from Utils.custom_csv_error import CSVServiceError
 
 
