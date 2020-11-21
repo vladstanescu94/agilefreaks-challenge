@@ -23,8 +23,13 @@ def main():
 
 def get_closest_shops_to_user(user_location, shops):
     closest_shops = map(lambda shop: (shop.name, shop.coordinates.compute_distance_to(user_location)), shops)
-    sorted_shops = sorted(closest_shops, key=lambda x: x[1])
+    no_duplicates = remove_duplicates(closest_shops)
+    sorted_shops = sorted(no_duplicates, key=lambda x: x[1])
     return sorted_shops[:3]
+
+
+def remove_duplicates(lst):
+    return list(set([item for item in lst]))
 
 
 if __name__ == "__main__":
