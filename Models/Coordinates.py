@@ -1,3 +1,4 @@
+import sys
 from math import sqrt
 
 
@@ -8,6 +9,7 @@ class Coordinates:
             self.longitude = float(longitude)
         except (ValueError, TypeError) as error:
             print(f"Invalid Coordinates Provided: {error}")
+            sys.exit(1)
 
     def compute_distance_to(self, target_coordinates):
         return round(sqrt((self.latitude - target_coordinates.latitude)**2 + (self.longitude - target_coordinates.longitude)**2), 4)
