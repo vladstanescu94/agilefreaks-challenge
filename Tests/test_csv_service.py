@@ -1,9 +1,10 @@
 import unittest
 import requests
 
-from Models.Coordinates import Coordinates
-from Models.CoffeeShop import CoffeeShop
-from Services.CSVService import CSVService
+from Models.coordinates import Coordinates
+from Models.coffee_shop import CoffeeShop
+from Services.csv_service import CSVService
+from Utils.custom_csv_error import CSVServiceHTTPError
 
 
 class CSVServiceUnitTest(unittest.TestCase):
@@ -17,6 +18,11 @@ class CSVServiceUnitTest(unittest.TestCase):
     def test_get_csv_data_from_url_raises_missing_schema_when_invalid_url_provided(self):
         self.csv_service.csv_url = "test"
         with self.assertRaises(requests.exceptions.MissingSchema):
+            self.csv_service.get_csv_data_from_url()
+
+    def test_get_csv_data_from_url_raises_http_eror_when_no_data_found_at__provided_url(self):
+        self.csv_service.csv_url = "https://raw.githubusercontent.com/vladstanescu94/agilefreaks-challenge/develop/Resources/"
+        with self.assertRaises(CSVServiceHTTPError):
             self.csv_service.get_csv_data_from_url()
 
     def test_get_coffee_shops_returns_expected_value(self):
