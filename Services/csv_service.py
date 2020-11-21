@@ -28,12 +28,15 @@ class CSVService:
 
         for row in reader:
             if not self._has_valid_size(row):
-                print("Invalid Row... Skipping Over")
                 continue
-            shop_name = row[0]
-            shop_coordinates = Coordinates(row[1], row[2])
-            shop = CoffeeShop(shop_name, shop_coordinates)
-            coffee_shops.append(shop)
+            try:
+                shop_name = row[0]
+                shop_coordinates = Coordinates(row[1], row[2])
+                shop = CoffeeShop(shop_name, shop_coordinates)
+                coffee_shops.append(shop)
+            except:
+                print(f"Invalid data ... Skipping over row {row} ")
+                continue
 
         self._validate_shops_list(coffee_shops)
         return coffee_shops
