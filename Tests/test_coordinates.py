@@ -1,5 +1,5 @@
 import unittest
-from Models.Coordinates import Coordinates
+from Models.coordinates import Coordinates
 
 
 class CoordinatesUnitTests(unittest.TestCase):

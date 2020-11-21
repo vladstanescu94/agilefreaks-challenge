@@ -1,8 +1,8 @@
 import unittest
 
-from Models.UserData import UserData
-from Models.Coordinates import Coordinates
-from Services.UserService import UserService
+from Models.user_data import UserData
+from Models.coordinates import Coordinates
+from Services.user_service import UserService
 
 
 class UserServiceUnitTest(unittest.TestCase):

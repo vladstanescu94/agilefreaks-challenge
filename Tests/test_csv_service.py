@@ -1,9 +1,9 @@
 import unittest
 import requests
 
-from Models.Coordinates import Coordinates
-from Models.CoffeeShop import CoffeeShop
-from Services.CSVService import CSVService
+from Models.coordinates import Coordinates
+from Models.coffee_shop import CoffeeShop
+from Services.csv_service import CSVService
 from Utils.custom_csv_error import CSVServiceHTTPError
 
 
