@@ -3,7 +3,7 @@
 ## How to run:
 
 1. Install Python 3.x
-2. Make python virtual environment Ex:
+2. Make python virtual environment in project directory Ex:
    - Mac OS and Linux: python3 -m venv env
    - Windows: py -m venv env
 3. Once you’ve created a virtual environment, you may activate it:
