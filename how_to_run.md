@@ -13,3 +13,4 @@
 5. Run tests with: python -m unittest
 6. Run coffee_shop_finder.py ex:
    - python coffee_shop_finder.py <user_latitude> <user_longitude> <csv_data_URL>
+   - python coffee_shop_finder.py 47.6 -122.4 https://raw.githubusercontent.com/vladstanescu94/agilefreaks-challenge/develop/Resources/coffee_shops.csv
