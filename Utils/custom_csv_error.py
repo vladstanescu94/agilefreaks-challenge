@@ -6,5 +6,5 @@ class CSVServiceHTTPError(CSVServiceError):
     pass
 
 
-class CSVServiceInvalidData(CSVServiceError):
+class CSVServiceEmptyDataError(CSVServiceError):
     pass
