@@ -14,5 +14,4 @@ class UserService:
 
     def validate_user_args(self):
         if len(self.args) < 3:
-            raise IndexError(
-                "Must provide 3 arguments as input: latitude logitude csv_url")
+            raise IndexError("Error - must provide 3 arguments as input: latitude logitude csv_url")
