@@ -8,12 +8,12 @@ from Utils.custom_csv_error import CSVServiceError
 def main():
     user_args = sys.argv[1:]
     user_service = UserService(args=user_args)
-    user_data = user_service.get_user_data()
-
     csv_service = CSVService()
+
     try:
+        user_data = user_service.get_user_data()
         csv_data = csv_service.get_csv_data(user_data.csv_url)
-    except CSVServiceError as error:
+    except (IndexError, CSVServiceError) as error:
         print(error)
         sys.exit(1)
 
